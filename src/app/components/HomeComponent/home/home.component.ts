@@ -50,6 +50,12 @@ import { DataService } from '../../../services/DataService/data.service';
             <figure class="image is-4by3">
               <img [src]="image.image" [alt]="image.description" />
             </figure>
+            <button
+              class="button is-danger"
+              (click)="deletePhoto(activeTab, image.description)"
+            >
+              delete photo
+            </button>
           </div>
         </div>
       </div>
@@ -263,7 +269,6 @@ export class HomeComponent {
     });
   }
 
-
   onFileSelected(event: any) {
     const file: File = event.target.files[0];
     this.uploadImage(file);
@@ -347,5 +352,20 @@ export class HomeComponent {
           alert('Failed to delete category. Please try again later.');
         });
     }
+  }
+
+  // Delete photo
+  deletePhoto(categoryTitle: string, photoDescription: string) {
+    this.dataService
+      .deletePhoto(categoryTitle, photoDescription)
+      .then(() => {
+        console.log('Photo deleted successfully');
+        // Reload images after deletion
+        this.loadImagesForCategory(this.activeTab);
+      })
+      .catch((error) => {
+        console.error('Error deleting photo:', error);
+        alert('Failed to delete photo. Please try again later.');
+      });
   }
 }
