@@ -15,6 +15,9 @@ import { DataService } from '../../../services/DataService/data.service';
           [ngClass]="{ 'is-active': activeTab === category }"
         >
           <a>{{ category }}</a>
+          <button class="button is-danger" (click)="deleteCategory(category)">
+            delete
+          </button>
         </li>
       </ul>
     </div>
@@ -40,103 +43,17 @@ import { DataService } from '../../../services/DataService/data.service';
       </button>
     </div>
 
-    <!-- @if (activeTab === 'Container 1') {
     <div class="container-custom">
-      <div class="card">
-        <div class="card-image">
-          <figure class="image is-4by3">
-            <img
-              src="https://bulma.io/images/placeholders/1280x960.png"
-              alt="Placeholder image"
-            />
-          </figure>
-        </div>
-      </div>
-      <div class="card">
-        <div class="card-image">
-          <figure class="image is-4by3">
-            <img
-              src="https://bulma.io/images/placeholders/1280x960.png"
-              alt="Placeholder image"
-            />
-          </figure>
-        </div>
-      </div>
-      <div class="card">
-        <div class="card-image">
-          <figure class="image is-4by3">
-            <img
-              src="https://bulma.io/images/placeholders/1280x960.png"
-              alt="Placeholder image"
-            />
-          </figure>
-        </div>
-      </div>
-      <div class="card">
-        <div class="card-image">
-          <figure class="image is-4by3">
-            <img
-              src="https://bulma.io/images/placeholders/1280x960.png"
-              alt="Placeholder image"
-            />
-          </figure>
-        </div>
-      </div>
-      <div class="card">
-        <div class="card-image">
-          <figure class="image is-4by3">
-            <img
-              src="https://bulma.io/images/placeholders/1280x960.png"
-              alt="Placeholder image"
-            />
-          </figure>
-        </div>
-      </div>
-      <div class="card">
-        <div class="card-image">
-          <figure class="image is-4by3">
-            <img
-              src="https://bulma.io/images/placeholders/1280x960.png"
-              alt="Placeholder image"
-            />
-          </figure>
+      <div *ngFor="let image of images">
+        <div class="card">
+          <div class="card-image">
+            <figure class="image is-4by3">
+              <img [src]="image.image" [alt]="image.description" />
+            </figure>
+          </div>
         </div>
       </div>
     </div>
-    } @if (activeTab === 'Container 2') {
-    <div class="container-custom">
-      <div class="card">
-        <div class="card-image">
-          <figure class="image is-4by3">
-            <img
-              src="https://bulma.io/images/placeholders/1280x960.png"
-              alt="Placeholder image"
-            />
-          </figure>
-        </div>
-      </div>
-      <div class="card">
-        <div class="card-image">
-          <figure class="image is-4by3">
-            <img
-              src="https://bulma.io/images/placeholders/1280x960.png"
-              alt="Placeholder image"
-            />
-          </figure>
-        </div>
-      </div>
-      <div class="card">
-        <div class="card-image">
-          <figure class="image is-4by3">
-            <img
-              src="https://bulma.io/images/placeholders/1280x960.png"
-              alt="Placeholder image"
-            />
-          </figure>
-        </div>
-      </div>
-    </div>
-    } -->
 
     <!-- category modal window -->
     <div class="modal" #categorymodal>
@@ -290,6 +207,8 @@ export class HomeComponent {
   userData: any;
   categoryForm: FormGroup;
   photoForm: FormGroup;
+  images: any[] = []; // Adăugați o nouă proprietate pentru a stoca imaginile
+
   @ViewChild('categorymodal') categorymodal: ElementRef;
   @ViewChild('photoModal') photoModal: ElementRef;
 
@@ -321,17 +240,29 @@ export class HomeComponent {
   }
 
   // Load user categories
+  // Load user categories
   loadCategories() {
     this.dataService.getUserCategories().then((userCategories: any[]) => {
       this.categories = userCategories.map((category: any) => category.title);
       this.activeTab = this.categories[0]; // Set the first category as active by default
+      this.loadImagesForCategory(this.activeTab); // Load images for the default active category
     });
   }
 
   // Set active tab
   setActiveTab(category: string): void {
     this.activeTab = category;
+    this.loadImagesForCategory(category); // Load images for the newly selected category
   }
+
+  // Load images for the active category
+  loadImagesForCategory(category: string) {
+    // Call a method in DataService to fetch images for the specified category
+    this.dataService.getImagesForCategory(category).then((images: any[]) => {
+      this.images = images;
+    });
+  }
+
 
   onFileSelected(event: any) {
     const file: File = event.target.files[0];
@@ -398,5 +329,23 @@ export class HomeComponent {
         console.error('Error adding photo:', error);
         alert('Failed to add photo. Please try again later.');
       });
+  }
+
+  // Delete category
+  deleteCategory(category: string) {
+    const categoryId = category;
+    if (categoryId) {
+      this.dataService
+        .deleteCategory(categoryId)
+        .then(() => {
+          console.log('Category deleted successfully');
+          // Reload categories after deletion
+          this.loadCategories();
+        })
+        .catch((error) => {
+          console.error('Error deleting category:', error);
+          alert('Failed to delete category. Please try again later.');
+        });
+    }
   }
 }

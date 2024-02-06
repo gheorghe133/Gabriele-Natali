@@ -65,11 +65,83 @@ export class DataService {
     }
   }
 
-  // Obține fotografiile dintr-o anumită categorie
-  getPhotosByCategory(category: string): Observable<any[]> {
-    const user = JSON.parse(localStorage.getItem('user')!);
-    return this.afs
-      .collection(`users/${user.uid}/categories/${category}/photos`)
-      .valueChanges({ idField: 'id' });
+  async deleteCategory(categoryTitle: string): Promise<void> {
+    try {
+      const user = JSON.parse(localStorage.getItem('user')!);
+      const categories = await this.getUserCategories();
+      const categoryId = categories.find(
+        (cat) => cat.title === categoryTitle
+      )?.id;
+      if (categoryId) {
+        await this.afs
+          .collection(`users/${user.uid}/categories`)
+          .doc(categoryId)
+          .delete();
+        console.log('Category deleted successfully');
+      } else {
+        throw new Error('Category ID not found');
+      }
+    } catch (error) {
+      console.error('Error deleting category:', error);
+      throw error;
+    }
+  }
+
+  async deletePhoto(
+    categoryTitle: string,
+    photoDescription: string
+  ): Promise<void> {
+    try {
+      const user = JSON.parse(localStorage.getItem('user')!);
+      const categories = await this.getUserCategories();
+      const categoryId = categories.find(
+        (cat) => cat.title === categoryTitle
+      )?.id;
+      if (categoryId) {
+        const snapshot = await this.afs
+          .collection(`users/${user.uid}/categories/${categoryId}/photos`)
+          .get()
+          .toPromise();
+        snapshot.forEach((doc) => {
+          const data = doc.data() as { description: string }; // Specificăm tipul datelor
+          if (data.description === photoDescription) {
+            doc.ref.delete();
+            console.log('Photo deleted successfully');
+          }
+        });
+      } else {
+        throw new Error('Category ID not found');
+      }
+    } catch (error) {
+      console.error('Error deleting photo:', error);
+      throw error;
+    }
+  }
+
+  // Obține imagini pentru o categorie specificată
+  async getImagesForCategory(category: string): Promise<any[]> {
+    try {
+      const user = JSON.parse(localStorage.getItem('user')!);
+      const categories = await this.getUserCategories();
+      const categoryId = categories.find((cat) => cat.title === category)?.id;
+      if (categoryId) {
+        // Fetch images for the specified category
+        const snapshot = await this.afs
+          .collection(`users/${user.uid}/categories/${categoryId}/photos`)
+          .get()
+          .toPromise();
+        const images = snapshot.docs.map((doc) => ({
+          id: doc.id,
+          ...(doc.data() as object),
+        }));
+
+        return images;
+      } else {
+        throw new Error('Category ID not found');
+      }
+    } catch (error) {
+      console.error('Error fetching images for category:', error);
+      return [];
+    }
   }
 }
