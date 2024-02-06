@@ -44,23 +44,53 @@ export class DataService {
   async addPhotoToCategory(photoData: any) {
     try {
       const user = JSON.parse(localStorage.getItem('user')!);
-      const { photo_image, photo_description } = photoData;
+      const { photo_image, photo_description, photo_category } = photoData;
 
       // Obțineți ID-ul specific al categoriei corespunzătoare titlului selectat
-      // Ar trebui să folosiți o metodă pentru a obține ID-ul, aici este doar un exemplu simplu
-      const categoryId = 'JAXSQ9KkJGq2fOduY7e5'; // Exemplu: ID-ul categoriei
+      const categoryId = await this.getCategoryIdFromTitle(photo_category);
 
-      // Adăugați detaliile imaginii în colecția specificată pentru categoria specificată
-      await this.afs
-        .collection(`users/${user.uid}/categories/${categoryId}/photos`)
-        .add({
-          image: photo_image,
-          description: photo_description,
-        });
+      // Verificați dacă a fost găsit ID-ul categoriei
+      if (categoryId) {
+        // Adăugați detaliile imaginii în colecția specificată pentru categoria specificată
+        await this.afs
+          .collection(`users/${user.uid}/categories/${categoryId}/photos`)
+          .add({
+            image: photo_image,
+            description: photo_description,
+          });
 
-      console.log('Photo added successfully');
+        console.log('Photo added successfully');
+      } else {
+        console.error('Error adding photo: Category ID not found');
+        throw new Error('Category ID not found');
+      }
     } catch (error) {
       console.error('Error adding photo:', error);
+      throw error;
+    }
+  }
+
+  // Funcție pentru a obține ID-ul categoriei din titlu
+  private async getCategoryIdFromTitle(
+    title: string
+  ): Promise<string | undefined> {
+    try {
+      // Obțineți lista de categorii pentru utilizatorul curent
+      const user = JSON.parse(localStorage.getItem('user')!);
+      const categories = await this.afs
+        .collection(`users/${user.uid}/categories`)
+        .get()
+        .toPromise();
+
+      // Căutați categoria cu titlul specificat
+      const category = categories.docs.find(
+        (doc: any) => doc.data().title === title
+      );
+
+      // Returnați ID-ul categoriei dacă a fost găsită
+      return category?.id;
+    } catch (error) {
+      console.error('Error getting category ID:', error);
       throw error;
     }
   }

@@ -246,7 +246,6 @@ export class HomeComponent {
   }
 
   // Load user categories
-  // Load user categories
   loadCategories() {
     this.dataService.getUserCategories().then((userCategories: any[]) => {
       this.categories = userCategories.map((category: any) => category.title);
@@ -266,6 +265,7 @@ export class HomeComponent {
     // Call a method in DataService to fetch images for the specified category
     this.dataService.getImagesForCategory(category).then((images: any[]) => {
       this.images = images;
+      console.log(images)
     });
   }
 
@@ -316,6 +316,7 @@ export class HomeComponent {
       this.dataService.addCategory(categoryTitle);
       this.toggleCategoryModal();
       this.categoryForm.reset();
+      this.loadCategories();
     }
   }
 
