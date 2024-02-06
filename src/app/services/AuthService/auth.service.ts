@@ -6,7 +6,6 @@ import {
   AngularFirestoreDocument,
 } from '@angular/fire/compat/firestore';
 import { Router } from '@angular/router';
-import { take } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
