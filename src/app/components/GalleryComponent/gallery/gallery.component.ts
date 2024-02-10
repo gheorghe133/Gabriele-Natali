@@ -11,13 +11,31 @@ import { ActivatedRoute } from '@angular/router';
     </div>
 
     <div class="container container-custom mt-4 mb-6">
-      <div *ngFor="let image of images; let i = index" class="card fade-in">
+      <div
+        *ngFor="let image of images; let i = index"
+        class="card fade-in"
+        (click)="openModal(image)"
+      >
         <div class="card-image">
           <figure class="image">
             <img [src]="image.src" [alt]="image.alt" loading="lazy" />
           </figure>
         </div>
       </div>
+    </div>
+
+    <div class="modal" [ngClass]="{ 'is-active': modalOpen }">
+      <div class="modal-background" (click)="closeModal()"></div>
+      <div class="modal-content">
+        <p class="image">
+          <img [src]="selectedImage?.src" [alt]="selectedImage?.alt" />
+        </p>
+      </div>
+      <button
+        class="modal-close is-large"
+        aria-label="close"
+        (click)="closeModal()"
+      ></button>
     </div>
   `,
   styles: [
@@ -63,6 +81,8 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class GalleryComponent implements OnInit {
   images: { src: string; alt: string }[] = [];
+  modalOpen: boolean = false;
+  selectedImage: { src: string; alt: string } | undefined;
 
   constructor(private route: ActivatedRoute) {}
 
@@ -72,6 +92,15 @@ export class GalleryComponent implements OnInit {
 
       this.images = this.getImagesForCategory(category);
     });
+  }
+
+  openModal(image: { src: string; alt: string }) {
+    this.selectedImage = image;
+    this.modalOpen = true;
+  }
+
+  closeModal() {
+    this.modalOpen = false;
   }
 
   getImagesForCategory(category: string): { src: string; alt: string }[] {
