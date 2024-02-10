@@ -4,8 +4,8 @@ import { ActivatedRoute } from '@angular/router';
 @Component({
   selector: 'app-gallery',
   template: `
-    <div class="buttons">
-      <button class="button is-success is-light has-text-dark">
+    <div class="buttons mt-2">
+      <button class="button is-success is-light has-text-dark" routerLink="/">
         <span class="icon">
           <i class="fa-solid fa-arrow-left"></i>
         </span>
