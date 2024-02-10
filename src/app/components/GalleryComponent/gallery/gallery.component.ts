@@ -4,26 +4,21 @@ import { ActivatedRoute } from '@angular/router';
 @Component({
   selector: 'app-gallery',
   template: `
-    @if(!imagesLoaded){
-    <app-loader></app-loader>
-    } @else{
-    <div class="buttons mt-4">
-      <button class="button is-warning is-light" routerLink="/">
-        Torna a casa
+    <div class="buttons">
+      <button class="button is-success is-light" routerLink="/">
+        Indietro
       </button>
     </div>
+
     <div class="container container-custom mt-4 mb-6">
-      @for (image of images; track $index) {
-      <div class="card">
+      <div *ngFor="let image of images; let i = index" class="card fade-in">
         <div class="card-image">
           <figure class="image">
             <img [src]="image.src" [alt]="image.alt" loading="lazy" />
           </figure>
         </div>
       </div>
-      }
     </div>
-    }
   `,
   styles: [
     `
@@ -38,6 +33,20 @@ import { ActivatedRoute } from '@angular/router';
         cursor: pointer;
         background: transparent;
         height: max-content;
+        opacity: 0; /* Inițial setăm opacitatea la 0 */
+      }
+
+      .fade-in {
+        animation: fadeInAnimation 2s ease forwards; /* Definim animația de fade-in */
+      }
+
+      @keyframes fadeInAnimation {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
       }
 
       .card-image img {
@@ -54,7 +63,6 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class GalleryComponent implements OnInit {
   images: { src: string; alt: string }[] = [];
-  imagesLoaded: boolean = false;
 
   constructor(private route: ActivatedRoute) {}
 
@@ -63,7 +71,6 @@ export class GalleryComponent implements OnInit {
       const category = params['id'];
 
       this.images = this.getImagesForCategory(category);
-      this.imagesLoaded = true;
     });
   }
 

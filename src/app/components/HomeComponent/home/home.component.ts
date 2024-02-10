@@ -5,7 +5,7 @@ import { Component } from '@angular/core';
   template: `
     <div class="container container-custom mt-6 mb-6">
       @for(category of categories; track $index){
-      <div class="card" [routerLink]="['/categoria', category.route]">
+      <div class="card fade-in" [routerLink]="['/categoria', category.route]">
         <div class="card-image">
           <figure class="image is-4by3">
             <img
@@ -36,6 +36,7 @@ import { Component } from '@angular/core';
         cursor: pointer;
         background: transparent;
         box-shadow: none;
+        opacity: 0
       }
 
       .card-image img {
@@ -49,6 +50,19 @@ import { Component } from '@angular/core';
         line-height: 1rem;
         color: #19110b;
         background-color: transparent;
+      }
+
+      .fade-in {
+        animation: fadeInAnimation 2s ease forwards; /* Definim animația de fade-in */
+      }
+
+      @keyframes fadeInAnimation {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
       }
     `,
   ],

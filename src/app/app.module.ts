@@ -5,10 +5,9 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './components/HomeComponent/home/home.component';
 import { GalleryComponent } from './components/GalleryComponent/gallery/gallery.component';
-import { LoaderComponent } from './components/LoaderComponent/loader/loader.component';
 
 @NgModule({
-  declarations: [AppComponent, HomeComponent, GalleryComponent, LoaderComponent],
+  declarations: [AppComponent, HomeComponent, GalleryComponent],
   imports: [BrowserModule, AppRoutingModule],
   providers: [],
   bootstrap: [AppComponent],
