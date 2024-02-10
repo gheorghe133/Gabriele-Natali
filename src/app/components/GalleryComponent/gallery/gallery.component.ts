@@ -4,7 +4,15 @@ import { ActivatedRoute } from '@angular/router';
 @Component({
   selector: 'app-gallery',
   template: `
-    <div class="container container-custom mt-6 mb-6">
+    @if(!imagesLoaded){
+    <app-loader></app-loader>
+    } @else{
+    <div class="buttons mt-4">
+      <button class="button is-warning is-light" routerLink="/">
+        Torna a casa
+      </button>
+    </div>
+    <div class="container container-custom mt-4 mb-6">
       @for (image of images; track $index) {
       <div class="card">
         <div class="card-image">
@@ -15,6 +23,7 @@ import { ActivatedRoute } from '@angular/router';
       </div>
       }
     </div>
+    }
   `,
   styles: [
     `
@@ -45,6 +54,7 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class GalleryComponent implements OnInit {
   images: { src: string; alt: string }[] = [];
+  imagesLoaded: boolean = false;
 
   constructor(private route: ActivatedRoute) {}
 
@@ -53,6 +63,7 @@ export class GalleryComponent implements OnInit {
       const category = params['id'];
 
       this.images = this.getImagesForCategory(category);
+      this.imagesLoaded = true;
     });
   }
 
