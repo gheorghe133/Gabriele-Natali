@@ -4,189 +4,24 @@ import { Component } from '@angular/core';
   selector: 'app-home',
   template: `
     <div class="container container-custom mt-6 mb-6">
-      <div class="card" [routerLink]="['/categoria', 'acquerelli']">
-        <div class="card-image">
-          <figure class="image is-4by3">
-            <img src="../../assets/categoria-1.jpg" alt="ACQUERELLI" />
-          </figure>
-        </div>
-        <div class="card-content">
-          <h5 class="title is-5 has-text-centered">ACQUERELLI</h5>
-        </div>
-      </div>
-      <div class="card">
-        <div class="card-image">
-          <figure class="image is-4by3">
-            <img src="../../assets/categoria-2.jpg" alt="AFORISMI" />
-          </figure>
-        </div>
-        <div class="card-content">
-          <h5 class="title is-5 has-text-centered">AFORISMI</h5>
-        </div>
-      </div>
-      <div class="card">
+      @for(category of categories; track $index){
+      <div class="card" [routerLink]="['/categoria', category.route]">
         <div class="card-image">
           <figure class="image is-4by3">
             <img
-              src="../../assets/categoria-3.jpg"
-              alt="DISEGNO CON (O SENZA) IMPEGNO"
+              [src]="
+                '../../assets/Home Gallery/categoria-' + category.id + '.jpg'
+              "
+              [alt]="category.name"
+              loading="lazy"
             />
           </figure>
         </div>
         <div class="card-content">
-          <h5 class="title is-5 has-text-centered">
-            DISEGNO CON (O SENZA) IMPEGNO
-          </h5>
+          <h5 class="title is-5 has-text-centered">{{ category.name }}</h5>
         </div>
       </div>
-      <div class="card">
-        <div class="card-image">
-          <figure class="image is-4by3">
-            <img src="../../assets/categoria-4.jpg" alt="Epopea Femminile" />
-          </figure>
-        </div>
-        <div class="card-content">
-          <h5 class="title is-5 has-text-centered">Epopea Femminile</h5>
-        </div>
-      </div>
-      <div class="card">
-        <div class="card-image">
-          <figure class="image is-4by3">
-            <img src="../../assets/categoria-5.jpg" alt="FUORI" />
-          </figure>
-        </div>
-        <div class="card-content">
-          <h5 class="title is-5 has-text-centered">FUORI</h5>
-        </div>
-      </div>
-      <div class="card">
-        <div class="card-image">
-          <figure class="image is-4by3">
-            <img
-              src="../../assets/categoria-6.jpg"
-              alt="Gli Indiani d'America"
-            />
-          </figure>
-        </div>
-        <div class="card-content">
-          <h5 class="title is-5 has-text-centered">Gli Indiani d'America</h5>
-        </div>
-      </div>
-      <div class="card">
-        <div class="card-image">
-          <figure class="image is-4by3">
-            <img
-              src="../../assets/categoria-7.jpg"
-              alt="La nouva generazione salva il mondo"
-            />
-          </figure>
-        </div>
-        <div class="card-content">
-          <h5 class="title is-5 has-text-centered">
-            La nouva generazione salva il mondo
-          </h5>
-        </div>
-      </div>
-      <div class="card">
-        <div class="card-image">
-          <figure class="image is-4by3">
-            <img src="../../assets/categoria-8.jpg" alt="Omaggio a Pablo" />
-          </figure>
-        </div>
-        <div class="card-content">
-          <h5 class="title is-5 has-text-centered">Omaggio a Pablo</h5>
-        </div>
-      </div>
-      <div class="card">
-        <div class="card-image">
-          <figure class="image is-4by3">
-            <img src="../../assets/categoria-9.jpg" alt="Rosso e Nero" />
-          </figure>
-        </div>
-        <div class="card-content">
-          <h5 class="title is-5 has-text-centered">Rosso e Nero</h5>
-        </div>
-      </div>
-      <div class="card">
-        <div class="card-image">
-          <figure class="image is-4by3">
-            <img src="../../assets/categoria-10.jpg" alt="SERIE BACIO" />
-          </figure>
-        </div>
-        <div class="card-content">
-          <h5 class="title is-5 has-text-centered">SERIE BACIO</h5>
-        </div>
-      </div>
-      <div class="card">
-        <div class="card-image">
-          <figure class="image is-4by3">
-            <img src="../../assets/categoria-11.jpg" alt="VARIE" />
-          </figure>
-        </div>
-        <div class="card-content">
-          <h5 class="title is-5 has-text-centered">VARIE</h5>
-        </div>
-      </div>
-      <div class="card">
-        <div class="card-image">
-          <figure class="image is-4by3">
-            <img src="../../assets/categoria-12.jpg" alt="VARIE 2" />
-          </figure>
-        </div>
-        <div class="card-content">
-          <h5 class="title is-5 has-text-centered">VARIE 2</h5>
-        </div>
-      </div>
-      <div class="card">
-        <div class="card-image">
-          <figure class="image is-4by3">
-            <img src="../../assets/categoria-13.jpg" alt="VARIE 3" />
-          </figure>
-        </div>
-        <div class="card-content">
-          <h5 class="title is-5 has-text-centered">VARIE 3</h5>
-        </div>
-      </div>
-      <div class="card">
-        <div class="card-image">
-          <figure class="image is-4by3">
-            <img src="../../assets/categoria-14.jpg" alt="VARIE 4" />
-          </figure>
-        </div>
-        <div class="card-content">
-          <h5 class="title is-5 has-text-centered">VARIE 4</h5>
-        </div>
-      </div>
-      <div class="card">
-        <div class="card-image">
-          <figure class="image is-4by3">
-            <img src="../../assets/categoria-15.jpg" alt="VARIE 5" />
-          </figure>
-        </div>
-        <div class="card-content">
-          <h5 class="title is-5 has-text-centered">VARIE 5</h5>
-        </div>
-      </div>
-      <div class="card">
-        <div class="card-image">
-          <figure class="image is-4by3">
-            <img src="../../assets/categoria-16.jpg" alt="VARIE 6" />
-          </figure>
-        </div>
-        <div class="card-content">
-          <h5 class="title is-5 has-text-centered">VARIE 6</h5>
-        </div>
-      </div>
-      <div class="card">
-        <div class="card-image">
-          <figure class="image is-4by3">
-            <img src="../../assets/categoria-17.jpg" alt="VARIE 7" />
-          </figure>
-        </div>
-        <div class="card-content">
-          <h5 class="title is-5 has-text-centered">VARIE 7</h5>
-        </div>
-      </div>
+      }
     </div>
   `,
   styles: [
@@ -204,7 +39,6 @@ import { Component } from '@angular/core';
       }
 
       .card-image img {
-        // min-height: 253px;
         border-radius: unset;
       }
 
@@ -220,5 +54,33 @@ import { Component } from '@angular/core';
   ],
 })
 export class HomeComponent {
+  categories = [
+    { id: 1, name: 'ACQUERELLI', route: 'acquerelli' },
+    { id: 2, name: 'AFORISMI', route: 'aforismi' },
+    {
+      id: 3,
+      name: 'DISEGNO CON (O SENZA) IMPEGNO',
+      route: 'disegno-con-o-senza-impegno',
+    },
+    { id: 4, name: 'Epopea Femminile', route: 'epopea-femminile' },
+    { id: 5, name: 'FUORI', route: 'fuori' },
+    { id: 6, name: "Gli Indiani d'America", route: 'gli-indiani-d-america' },
+    {
+      id: 7,
+      name: 'La nouva generazione salva il mondo',
+      route: 'la-nouva-generazione-salva-il-mondo',
+    },
+    { id: 8, name: 'Omaggio a Pablo', route: 'omaggio-a-pablo' },
+    { id: 9, name: 'Rosso e Nero', route: 'rosso-e-nero' },
+    { id: 10, name: 'SERIE BACIO', route: 'serie-bacio' },
+    { id: 11, name: 'VARIE', route: 'varie' },
+    { id: 12, name: 'VARIE 2', route: 'varie-2' },
+    { id: 13, name: 'VARIE 3', route: 'varie-3' },
+    { id: 14, name: 'VARIE 4', route: 'varie-4' },
+    { id: 15, name: 'VARIE 5', route: 'varie-5' },
+    { id: 16, name: 'VARIE 6', route: 'varie-6' },
+    { id: 17, name: 'VARIE 7', route: 'varie-7' },
+  ];
+
   constructor() {}
 }

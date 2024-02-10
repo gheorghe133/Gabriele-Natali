@@ -13,7 +13,7 @@ import { Component } from '@angular/core';
         <router-outlet> </router-outlet>
         <footer class="footer mt-5">
           <div class="content has-text-centered">
-            <p>With ❤️ from <strong>Vrinceanu Iulian</strong></p>
+            <p>Vrinceanu Iulian</p>
           </div>
         </footer>
       </div>
