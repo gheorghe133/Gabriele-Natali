@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { AuthService } from '../../../services/AuthService/auth.service';
 
 @Component({
   selector: 'app-home',
@@ -15,15 +14,6 @@ import { AuthService } from '../../../services/AuthService/auth.service';
         </li>
         }
       </ul>
-    </div>
-
-    <div class="buttons">
-      <button *ngIf="userData" class="button is-danger " (click)="logout()">
-        Sign out
-      </button>
-      <button *ngIf="userData" class="button is-warning ">
-        Create category
-      </button>
     </div>
 
     @if (activeTab === 'Container 1') {
@@ -147,33 +137,9 @@ export class HomeComponent {
 
   activeTab: string = 'Container 1';
 
-  userData;
-  userId;
-
-  constructor(private authService: AuthService) {}
-
-  ngDoCheck() {
-    // Check for changes in local storage and update userData variable
-    this.userData = JSON.parse(localStorage.getItem('user'));
-
-    const user = JSON.parse(localStorage.getItem('user'));
-    if (user && user.uid) {
-      this.userId = user.uid;
-    }
-  }
+  constructor() {}
 
   setActiveTab(category: string): void {
     this.activeTab = category;
-  }
-
-  async logout() {
-    try {
-      // Implementează metoda de deconectare din serviciul authService
-      // Poți adăuga cod aici pentru a te asigura că utilizatorul este delogat și pe partea de client și pe partea de server
-      this.authService.SignOut();
-      console.log('Logged out successfully');
-    } catch (error) {
-      console.error('Error logging out:', error);
-    }
   }
 }
