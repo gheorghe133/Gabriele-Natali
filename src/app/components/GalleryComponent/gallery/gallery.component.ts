@@ -5,8 +5,11 @@ import { ActivatedRoute } from '@angular/router';
   selector: 'app-gallery',
   template: `
     <div class="buttons">
-      <button class="button is-success is-light" routerLink="/">
-        Indietro
+      <button class="button is-success is-light has-text-dark">
+        <span class="icon">
+          <i class="fa-solid fa-arrow-left"></i>
+        </span>
+        <span>Indietro</span>
       </button>
     </div>
 
