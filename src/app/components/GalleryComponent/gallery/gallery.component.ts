@@ -51,7 +51,7 @@ import { ActivatedRoute } from '@angular/router';
   styles: [
     `
       .container-custom {
-        column-count: 3;
+        column-count: 2;
         column-gap: 1rem;
       }
 
