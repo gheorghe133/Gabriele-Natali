@@ -3,7 +3,15 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'app-home',
   template: `
-    <div class="container container-custom mt-6 mb-6">
+    <section class="hero is-medium is-link mt-4">
+      <div class="hero-body has-text-centered">
+        <p class="title is-2 has-text-dark">Gabriele Natali</p>
+      </div>
+    </section>
+
+    <p class="title is-3 has-text-centered has-text-dark mt-6">Galleria</p>
+
+    <div class="container container-custom mt-3 mb-6">
       @for(category of categories; track $index){
       <div class="card fade-in" [routerLink]="['/categoria', category.route]">
         <div class="card-image">
@@ -25,6 +33,12 @@ import { Component } from '@angular/core';
   `,
   styles: [
     `
+      .hero {
+        background: url('/assets/Home Gallery/categoria-1.jpg');
+        background-size: cover;
+        background-repeat: no-repeat;
+      }
+
       .container-custom {
         display: grid;
         grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));

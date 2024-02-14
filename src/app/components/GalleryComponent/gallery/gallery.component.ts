@@ -5,7 +5,7 @@ import { ActivatedRoute } from '@angular/router';
   selector: 'app-gallery',
   template: `
     <div class="buttons mt-2">
-      <button class="button is-success is-light has-text-dark" routerLink="/">
+      <button class="button bd-fat-button is-sponsor" routerLink="/">
         <span class="icon">
           <i class="fa-solid fa-arrow-left"></i>
         </span>
@@ -49,7 +49,7 @@ import { ActivatedRoute } from '@angular/router';
   styles: [
     `
       .container-custom {
-        column-count: 2;
+        column-count: 3;
         column-gap: 1rem;
       }
 
@@ -59,11 +59,11 @@ import { ActivatedRoute } from '@angular/router';
         cursor: pointer;
         background: transparent;
         height: max-content;
-        opacity: 0; /* Inițial setăm opacitatea la 0 */
+        opacity: 0;
       }
 
       .fade-in {
-        animation: fadeInAnimation 2s ease forwards; /* Definim animația de fade-in */
+        animation: fadeInAnimation 1.5s ease forwards;
       }
 
       @keyframes fadeInAnimation {
