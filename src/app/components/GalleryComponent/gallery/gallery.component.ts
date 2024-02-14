@@ -4,33 +4,35 @@ import { ActivatedRoute } from '@angular/router';
 @Component({
   selector: 'app-gallery',
   template: `
-    <div class="buttons mt-2">
-      <button class="button bd-fat-button is-sponsor" routerLink="/">
-        <span class="icon">
-          <i class="fa-solid fa-arrow-left"></i>
-        </span>
-        <span>Indietro</span>
-      </button>
-    </div>
+    <section class="section">
+      <div class="container">
+        <div class="buttons mt-2">
+          <button class="button bd-fat-button is-sponsor" routerLink="/">
+            <span class="icon">
+              <i class="fa-solid fa-arrow-left"></i>
+            </span>
+            <span>Indietro</span>
+          </button>
+        </div>
 
-    <div class="container container-custom mt-4 mb-6">
-      <div
-        *ngFor="let image of images; let i = index"
-        class="card fade-in"
-        (click)="openModal(image)"
-      >
-        <div class="card-image">
-          <figure class="image">
-            <img
-              ngSrc="{{ image.src }}"
-              alt="{{ image.alt }}"
-              loading="lazy"
-              fill
-            />
-          </figure>
+        <div class="container container-custom mt-4 mb-6">
+          @for(image of images; track $index){
+          <div class="card fade-in" (click)="openModal(image)">
+            <div class="card-image">
+              <figure class="image">
+                <img
+                  ngSrc="{{ image.src }}"
+                  alt="{{ image.alt }}"
+                  loading="lazy"
+                  fill
+                />
+              </figure>
+            </div>
+          </div>
+          }
         </div>
       </div>
-    </div>
+    </section>
 
     <div class="modal" [ngClass]="{ 'is-active': modalOpen }">
       <div class="modal-background" (click)="closeModal()"></div>

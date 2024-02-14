@@ -3,13 +3,13 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'app-home',
   template: `
-    <section class="hero is-medium is-link mt-4">
+    <section class="hero is-medium">
       <div class="hero-body has-text-centered">
-        <p class="title is-2 has-text-dark">Gabriele Natali</p>
+        <p class="title is-1 has-text-dark mt-2">Gabriele Natali</p>
       </div>
     </section>
 
-    <p class="title is-3 has-text-centered has-text-dark mt-6">Galleria</p>
+    <h3 class="title is-3 has-text-centered has-text-dark mt-6">Galleria</h3>
 
     <div class="container container-custom mt-3 mb-6">
       @for(category of categories; track $index){
@@ -37,6 +37,10 @@ import { Component } from '@angular/core';
         background: url('/assets/Home Gallery/categoria-1.jpg');
         background-size: cover;
         background-repeat: no-repeat;
+      }
+
+      .hero .title {
+        font-family: 'Caveat', cursive;
       }
 
       .container-custom {
@@ -90,23 +94,23 @@ export class HomeComponent {
       route: 'disegno-con-o-senza-impegno',
     },
     { id: 4, name: 'Epopea Femminile', route: 'epopea-femminile' },
-    { id: 5, name: 'FUORI', route: 'fuori' },
-    { id: 6, name: "Gli Indiani d'America", route: 'gli-indiani-d-america' },
+    { id: 5, name: "Gli Indiani d'America", route: 'gli-indiani-d-america' },
     {
-      id: 7,
+      id: 6,
       name: 'La nouva generazione salva il mondo',
       route: 'la-nouva-generazione-salva-il-mondo',
     },
-    { id: 8, name: 'Omaggio a Pablo', route: 'omaggio-a-pablo' },
-    { id: 9, name: 'Rosso e Nero', route: 'rosso-e-nero' },
-    { id: 10, name: 'SERIE BACIO', route: 'serie-bacio' },
-    { id: 11, name: 'VARIE', route: 'varie' },
-    { id: 12, name: 'VARIE 2', route: 'varie-2' },
-    { id: 13, name: 'VARIE 3', route: 'varie-3' },
-    { id: 14, name: 'VARIE 4', route: 'varie-4' },
-    { id: 15, name: 'VARIE 5', route: 'varie-5' },
-    { id: 16, name: 'VARIE 6', route: 'varie-6' },
-    { id: 17, name: 'VARIE 7', route: 'varie-7' },
+    { id: 7, name: 'Omaggio a Pablo', route: 'omaggio-a-pablo' },
+    { id: 8, name: 'Rosso e Nero', route: 'rosso-e-nero' },
+    { id: 9, name: 'SERIE BACIO', route: 'serie-bacio' },
+    { id: 10, name: 'VARIE', route: 'varie' },
+    { id: 11, name: 'VARIE 2', route: 'varie-2' },
+    { id: 12, name: 'VARIE 3', route: 'varie-3' },
+    { id: 13, name: 'VARIE 4', route: 'varie-4' },
+    { id: 14, name: 'VARIE 5', route: 'varie-5' },
+    { id: 15, name: 'VARIE 6', route: 'varie-6' },
+    { id: 16, name: 'VARIE 7', route: 'varie-7' },
+    { id: 17, name: 'FUORI', route: 'fuori' },
   ];
 
   constructor() {}

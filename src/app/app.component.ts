@@ -2,13 +2,7 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-root',
-  template: `
-    <section class="section">
-      <div class="container">
-        <router-outlet> </router-outlet>
-      </div>
-    </section>
-  `,
+  template: ` <router-outlet> </router-outlet> `,
   styles: [
     `
       .navbar-brand {
