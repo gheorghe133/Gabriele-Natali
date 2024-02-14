@@ -21,7 +21,12 @@ import { ActivatedRoute } from '@angular/router';
       >
         <div class="card-image">
           <figure class="image">
-            <img [src]="image.src" [alt]="image.alt" loading="lazy" />
+            <img
+              ngSrc="{{ image.src }}"
+              alt="{{ image.alt }}"
+              loading="lazy"
+              fill
+            />
           </figure>
         </div>
       </div>
@@ -72,6 +77,7 @@ import { ActivatedRoute } from '@angular/router';
 
       .card-image img {
         border-radius: unset;
+        position: relative !important;
       }
 
       @media (max-width: 700px) {

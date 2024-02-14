@@ -9,11 +9,10 @@ import { Component } from '@angular/core';
         <div class="card-image">
           <figure class="image is-4by3">
             <img
-              [src]="
-                '../../assets/Home Gallery/categoria-' + category.id + '.jpg'
-              "
-              [alt]="category.name"
+              ngSrc="../../assets/Home Gallery/categoria-{{ category.id }}.jpg"
+              alt="{{ category.name }}"
               loading="lazy"
+              fill
             />
           </figure>
         </div>
@@ -36,7 +35,7 @@ import { Component } from '@angular/core';
         cursor: pointer;
         background: transparent;
         box-shadow: none;
-        opacity: 0
+        opacity: 0;
       }
 
       .card-image img {
@@ -53,7 +52,7 @@ import { Component } from '@angular/core';
       }
 
       .fade-in {
-        animation: fadeInAnimation 2s ease forwards; /* Definim animația de fade-in */
+        animation: fadeInAnimation 1.5s ease forwards;
       }
 
       @keyframes fadeInAnimation {
