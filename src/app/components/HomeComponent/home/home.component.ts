@@ -13,7 +13,7 @@ import { Component } from '@angular/core';
       <h3 class="title is-3 has-text-centered has-text-dark">Autobiografia</h3>
 
       <div class="container container-about">
-        <img src="../../assets/About/profile.jpg" />
+        <img src="../../assets/About/profile.jpg"  alt="Ficarolo Gabriele Natali"/>
 
         <div class="content has-text-dark has-text-justified">
           <p>
@@ -64,17 +64,17 @@ import { Component } from '@angular/core';
 
       <div class="container gallery-container mt-6 mb-6">
         <ul class="masonry-gallery">
-          <li><img src="../../assets/About/pic-1.jpg" /></li>
-          <li><img src="../../assets/About/pic-2.jpg" /></li>
-          <li><img src="../../assets/About/pic-3.jpg" /></li>
-          <li><img src="../../assets/About/pic-4.jpg" /></li>
-          <li><img src="../../assets/About/pic-5.jpg" /></li>
-          <li><img src="../../assets/About/pic-6.jpg" /></li>
-          <li><img src="../../assets/About/pic-7.jpg" /></li>
-          <li><img src="../../assets/About/pic-8.jpg" /></li>
-          <li><img src="../../assets/About/pic-9.jpg" /></li>
-          <li><img src="../../assets/About/pic-10.jpg" /></li>
-          <li><img src="../../assets/About/pic-11.jpg" /></li>
+          <li><img src="../../assets/About/pic-1.jpg" alt="Gabriele Natali Category 1" /></li>
+          <li><img src="../../assets/About/pic-2.jpg" alt="Gabriele Natali Category 2"/></li>
+          <li><img src="../../assets/About/pic-3.jpg" alt="Gabriele Natali Category 3"/></li>
+          <li><img src="../../assets/About/pic-4.jpg" alt="Gabriele Natali Category 4"/></li>
+          <li><img src="../../assets/About/pic-5.jpg" alt="Gabriele Natali Category 5"/></li>
+          <li><img src="../../assets/About/pic-6.jpg" alt="Gabriele Natali Category 6"/></li>
+          <li><img src="../../assets/About/pic-7.jpg" alt="Gabriele Natali Category 7"/></li>
+          <li><img src="../../assets/About/pic-8.jpg" alt="Gabriele Natali Category 8"/></li>
+          <li><img src="../../assets/About/pic-9.jpg" alt="Gabriele Natali Category9"/></li>
+          <li><img src="../../assets/About/pic-10.jpg" alt="Gabriele Natali Category 10"/></li>
+          <li><img src="../../assets/About/pic-11.jpg" alt="Gabriele Natali Category 11"/></li>
         </ul>
       </div>
 

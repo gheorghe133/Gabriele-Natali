@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset
+  xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+  <url>
+    <loc>https://gabriele-natali.netlify.app/</loc>
+    <lastmod>2024-03-23T09:06:06+00:00</lastmod>
+    <priority>1.0</priority>
+    <changefreq>daily</changefreq>
+  </url>
+
+  <url>
+    <loc>https://gabriele-natali.netlify.app/categoria/acquerelli</loc>
+    <lastmod>2024-03-23T09:06:06+00:00</lastmod>
+    <priority>0.9</priority>
+    <changefreq>daily</changefreq>
+  </url>
+
+  <url>
+    <loc>https://gabriele-natali.netlify.app/categoria/aforismi</loc>
+    <lastmod>2024-03-23T09:06:06+00:00</lastmod>
+    <priority>0.9</priority>
+    <changefreq>daily</changefreq>
+  </url>
+
+  <url>
+    <loc>https://gabriele-natali.netlify.app/categoria/disegno-con-o-senza-impegno</loc>
+    <lastmod>2024-03-23T09:06:06+00:00</lastmod>
+    <priority>0.9</priority>
+    <changefreq>daily</changefreq>
+  </url>
+
+  <url>
+    <loc>https://gabriele-natali.netlify.app/categoria/epopea-femminile</loc>
+    <lastmod>2024-03-23T09:06:06+00:00</lastmod>
+    <priority>0.5</priority>
+    <changefreq>daily</changefreq>
+  </url>
+
+  <url>
+    <loc>https://gabriele-natali.netlify.app/categoria/gli-indiani-d-america</loc>
+    <lastmod>2024-03-23T09:06:06+00:00</lastmod>
+    <priority>0.8</priority>
+    <changefreq>daily</changefreq>
+  </url>
+
+  <url>
+    <loc>https://gabriele-natali.netlify.app/categoria/la-nouva-generazione-salva-il-mondo</loc>
+    <lastmod>2024-03-23T09:06:06+00:00</lastmod>
+    <priority>0.8</priority>
+    <changefreq>daily</changefreq>
+  </url>
+
+  <url>
+    <loc>https://gabriele-natali.netlify.app/categoria/omaggio-a-pablo</loc>
+    <lastmod>2024-03-23T09:06:06+00:00</lastmod>
+    <priority>0.8</priority>
+    <changefreq>daily</changefreq>
+  </url>
+
+  <url>
+    <loc>https://gabriele-natali.netlify.app/categoria/rosso-e-nero</loc>
+    <lastmod>2024-03-23T09:06:06+00:00</lastmod>
+    <priority>0.9</priority>
+    <changefreq>daily</changefreq>
+  </url>
+
+  <url>
+    <loc>https://gabriele-natali.netlify.app/categoria/serie-bacio</loc>
+    <lastmod>2024-03-23T09:06:06+00:00</lastmod>
+    <priority>0.7</priority>
+    <changefreq>daily</changefreq>
+  </url>
+
+  <url>
+    <loc>https://gabriele-natali.netlify.app/categoria/varie</loc>
+    <lastmod>2024-03-23T09:06:06+00:00</lastmod>
+    <priority>0.7</priority>
+    <changefreq>daily</changefreq>
+  </url>
+
+  <url>
+    <loc>https://gabriele-natali.netlify.app/categoria/varie-2</loc>
+    <lastmod>2024-03-23T09:06:06+00:00</lastmod>
+    <priority>0.7</priority>
+    <changefreq>daily</changefreq>
+  </url>
+
+</urlset>
